@@ -1,0 +1,30 @@
+body {
+    background-color: powderblue;
+    font-family:YeonSung
+}
+h1   {
+    font-family: "Sofia", sans-serif;
+    color: blue;
+}
+h2   {color: green;}
+p    {color: red;}
+a:link {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+  }
+a:visited {
+    color: rgb(59, 223, 245);
+    background-color: transparent;
+    text-decoration: none;
+  }
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+  }
