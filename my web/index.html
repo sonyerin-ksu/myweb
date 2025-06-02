@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손예린 포트폴리오</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>손예린 포트폴리오</h1>
+         <section id="about">
+        <div class="about-content">
+            <img src="assets/your_profile_picture.jpg" alt="[당신의 이름] 프로필 사진" class="profile-pic">
+            <div class="about-text">
+                <h2>ABOUT ME</h2>
+                <p>안녕하세요! 디자인과 영상 기획 및 편집을 전문으로 하는 **[당신의 이름]**입니다.</p>
+                <p>저는 시각적인 스토리텔링을 통해 메시지를 효과적으로 전달하는 것에 열정을 가지고 있습니다. 사용자 경험을 고려한 직관적인 디자인과, 기획 단계부터 완성까지 유기적인 영상 제작 프로세스를 중요하게 생각합니다.</p>
+                <p>다양한 프로젝트를 통해 쌓은 **디자인 감각**과 **영상 편집 기술**, 그리고 **새로운 아이디어를 기획하는 능력**을 바탕으로, 귀사의 브랜드 가치를 높이고 시청자에게 깊은 인상을 남길 수 있는 결과물을 만들어나가겠습니다.</p>
+                <p>더 자세한 정보나 궁금한 점이 있다면 언제든지 연락 주세요!</p>
+            </div>
+        </div>
+    </section>
+</section>
+    <section id="skills-tools">
+        <h2>SKILLS & TOOLS</h2>
+        <div class="tool-list">
+            <div class="tool-item">
+                <img src="assets/tool_icons/photoshop.png" alt="Adobe Photoshop">
+                <span>Photoshop</span>
+            </div>
+            <div class="tool-item">
+                <img src="assets/tool_icons/premierepro.png" alt="Adobe Premiere Pro">
+                <span>Premiere Pro</span>
+            </div>
+            <div class="tool-item">
+                <img src="assets/tool_icons/aftereffects.png" alt="Adobe After Effects">
+                <span>After Effects</span>
+            </div>
+            <div class="tool-item">
+                <img src="assets/tool_icons/illustrator.png" alt="Adobe Illustrator">
+                <span>Illustrator</span>
+            </div>
+            <div class="tool-item">
+                <img src="assets/tool_icons/cinema 4D.png" alt="Cinema 4D">
+                <span>Cinema 4D</span>
+            </div>
+            <div class="tool-item">
+                <img src="assets/tool_icons/notion.png" alt="Notion">
+                <span>Notion</span>
+            </div>
+            
+        </div>
+        <p class="additional-skills">
+            이 외에도 다양한 **디자인 원칙**과 **영상 스토리텔링 기법**을 활용하여 프로젝트를 기획하고 실행합니다.
+        </p>
+    </section>
+
+        <nav>
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="design">Design</button>
+            <button class="filter-btn" data-category="video-planning">Video Planning</button>
+            <button class="filter-btn" data-category="video-editing">Video Editing</button>
+        </nav>
+    </header>
+
+    <main id="portfolio-items">
+        <h2>PORTFOLIO</h2>
+
+        <section class="portfolio-category" data-category="video">
+            <div class="category-header">
+                <h3><i class="fas fa-video"></i> VIDEO PROJECTS</h3>
+                <div class="category-thumbnail" data-expand-category="video">
+                    <img src="assets/video_category_main.jpg" alt="대표 영상 작업물">
+                    <div class="thumbnail-overlay">
+                        <p>클릭하여 더 많은 영상 보기</p>
+                    </div>
+                </div>
+            </div>
+            <div class="category-content hidden" id="video-content">
+                <div class="portfolio-item" data-item-category="video">
+                    <h3>브랜드 영상 A</h3>
+                    <img src="assets/video_item_1.jpg" alt="브랜드 영상 A">
+                    <p>브랜드 A를 위한 홍보 영상입니다.</p>
+                </div>
+                <div class="portfolio-item" data-item-category="video">
+                    <h3>다큐멘터리 B</h3>
+                    <img src="assets/video_item_2.jpg" alt="다큐멘터리 B">
+                    <p>사회적 이슈를 다룬 다큐멘터리입니다.</p>
+                </div>
+                <div class="portfolio-item" data-item-category="video">
+                    <h3>제품 리뷰 C</h3>
+                    <img src="assets/video_item_3.jpg" alt="제품 리뷰 C">
+                    <p>신제품 C의 상세 리뷰 영상입니다.</p>
+                </div>
+                </div>
+        </section>
+
+        <section class="portfolio-category" data-category="design">
+            <div class="category-header">
+                <h3><i class="fas fa-paint-brush"></i> DESIGN PROJECTS</h3>
+                <div class="category-thumbnail" data-expand-category="design">
+                    <img src="assets/design_category_main.jpg" alt="대표 디자인 작업물">
+                    <div class="thumbnail-overlay">
+                        <p>클릭하여 더 많은 디자인 보기</p>
+                    </div>
+                </div>
+            </div>
+            <div class="category-content hidden" id="design-content">
+                <div class="portfolio-item" data-item-category="design">
+                    <h3>로고 디자인</h3>
+                    <img src="assets/design_item_1.jpg" alt="로고 디자인">
+                    <p>새로운 브랜드를 위한 로고 디자인.</p>
+                </div>
+                <div class="portfolio-item" data-item-category="design">
+                    <h3>웹사이트 UI/UX</h3>
+                    <img src="assets/design_item_2.jpg" alt="웹사이트 UI/UX">
+                    <p>반응형 웹사이트 UI/UX 기획 및 디자인.</p>
+                </div>
+                </div>
+        </section>
+
+        <section class="portfolio-category" data-category="video-planning">
+            <div class="category-header">
+                <h3><i class="fas fa-lightbulb"></i> VIDEO PLANNING</h3>
+                <div class="category-thumbnail" data-expand-category="video-planning">
+                    <img src="assets/planning_category_main.jpg" alt="대표 영상 기획 작업물">
+                    <div class="thumbnail-overlay">
+                        <p>클릭하여 더 많은 기획 보기</p>
+                    </div>
+                </div>
+            </div>
+            <div class="category-content hidden" id="planning-content">
+                <div class="portfolio-item" data-item-category="video-planning">
+                    <h3>스토리보드 A</h3>
+                    <img src="assets/planning_item_1.jpg" alt="스토리보드 A">
+                    <p>광고 영상 스토리보드 및 콘티 제작.</p>
+                </div>
+                </div>
+        </section>
+
+    </main>
+
+    <section id="contact">
+        <h2>CONTACT ME</h2>
+        <p>궁금한 점이 있거나 협업을 원하시면 언제든지 연락 주세요!</p>
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p><strong>Phone:</strong> +82 10-1234-5678</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/your_instagram_id" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/yourchannel" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.kakao.com/o/syourchatcode" target="_blank" aria-label="KakaoTalk"><i class="fas fa-comment"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 손예린. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
