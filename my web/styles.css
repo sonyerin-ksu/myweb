@@ -1,3 +1,7 @@
+.wrapper {
+    max-width: 1200px; /* 사이트의 최대 너비 */
+    margin: 0 auto; /* 중앙 정렬 */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
