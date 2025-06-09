@@ -1,36 +1,33 @@
+// script.js 파일
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 기존 필터링 버튼 로직은 주석 처리하거나 제거하세요.
-    // const filterButtons = document.querySelectorAll('.filter-btn');
-    // ... (기존 필터링 로직) ...
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const menuItems = document.querySelectorAll('.overlay-nav .menu-item'); // 메뉴 항목들
 
-    const categoryThumbnails = document.querySelectorAll('.category-thumbnail');
+    // 햄버거 버튼 클릭 시 메뉴 열기
+    hamburgerBtn.addEventListener('click', () => {
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 메뉴 열렸을 때 스크롤 방지
+    });
 
-    categoryThumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', (event) => {
-            const categoryToExpand = event.currentTarget.dataset.expandCategory;
-            const targetContent = document.getElementById(`${categoryToExpand}-content`);
+    // 닫기 버튼 클릭 시 메뉴 닫기
+    closeBtn.addEventListener('click', () => {
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // 메뉴 닫혔을 때 스크롤 허용
+    });
 
-            if (targetContent) {
-                // 현재 확장된 카테고리를 찾아서 축소 (선택 사항: 하나만 열리도록)
-                document.querySelectorAll('.category-content.expanded').forEach(expandedContent => {
-                    if (expandedContent !== targetContent) { // 클릭된 것 외의 다른 열린 카테고리
-                        expandedContent.classList.remove('expanded');
-                        expandedContent.classList.add('hidden');
-                        // 해당 카테고리의 header에 'active' 클래스 제거
-                        expandedContent.closest('.portfolio-category').querySelector('.category-header').classList.remove('active');
-                    }
-                });
-
-                // 클릭된 카테고리 콘텐츠 토글
-                targetContent.classList.toggle('hidden');
-                targetContent.classList.toggle('expanded');
-
-                // 카테고리 헤더에 'active' 클래스 토글 (스타일링 용)
-                const categoryHeader = event.currentTarget.closest('.category-header');
-                if (categoryHeader) {
-                    categoryHeader.classList.toggle('active');
-                }
-            }
+    // 메뉴 항목 클릭 시 메뉴 닫기 (새 페이지로 이동하거나 스크롤 후 닫기)
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
+
+    // 이제 카테고리 배너 클릭 시 상세 페이지로 이동하므로
+    // HTML의 <a> 태그의 기본 동작을 사용합니다.
+    // 따라서, 이 script.js 파일에는 카테고리 배너와 관련된 별도의 JavaScript 코드가 필요 없습니다.
+    // 이 파일은 비워두거나, 다른 전역적으로 필요한 스크립트만 포함하면 됩니다.
 });

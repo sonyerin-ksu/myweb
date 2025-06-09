@@ -1,0 +1,402 @@
+/* style.css 파일 */
+
+/* 1. HTML과 BODY의 기본 마진/패딩을 초기화하고, BODY에 중앙 정렬 속성을 명확히 적용 */
+html {
+    overflow-x: hidden; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; 
+    padding: 0; 
+    
+    background-color: #f4f4f4; 
+    color: #333;
+
+    max-width: 1200px; 
+    margin: 0 auto;    
+
+    background-color: #ffffff; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); 
+}
+
+/* 2. 각 주요 섹션의 내부 콘텐츠 중앙 정렬 (body의 max-width 내에서) */
+header, 
+#about, 
+#skills-tools, 
+#portfolio-items, 
+#contact, 
+footer {
+    max-width: 1160px; 
+    margin: 0 auto; 
+    box-sizing: border-box; 
+}
+
+
+/* --- header 스타일 (햄버거 메뉴를 위해 수정) --- */
+header {
+    display: flex; /* 자식 요소들을 가로로 배치 */
+    justify-content: space-between; /* h1과 햄버거 버튼을 양 끝으로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 1em 20px;
+    background-color: #333;
+    color: #fff;
+    position: relative; 
+    z-index: 1001; /* 다른 요소 위에 오도록 (특히 메뉴 오버레이보다 높게) */
+}
+
+header h1 {
+    margin: 0; /* h1의 기본 마진 제거 */
+    font-size: 1.8em; 
+}
+
+/* 햄버거 버튼 스타일 */
+.hamburger-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8em;
+    cursor: pointer;
+    padding: 10px;
+    display: block; 
+    z-index: 1002; /* 오버레이보다 위에 오도록 */
+}
+
+/* 햄버거 메뉴 오버레이 (초기에는 숨김) */
+.menu-overlay {
+    position: fixed; /* 화면에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* 어두운 반투명 배경 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 콘텐츠 위에 오도록 */
+    opacity: 0; /* 초기 투명도 0 */
+    visibility: hidden; /* 초기에는 완전히 숨김 */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 메뉴가 열렸을 때 */
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 닫기 버튼 스타일 */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.2em;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* 오버레이 내부 네비게이션 스타일 */
+.overlay-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.overlay-nav li {
+    margin-bottom: 30px; /* 각 메뉴 항목 간 간격 */
+}
+
+.overlay-nav a.menu-item {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2.5em; /* 메뉴 항목 텍스트 크기 */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.overlay-nav a.menu-item:hover {
+    color: #007bff; /* 호버 시 색상 변경 */
+}
+
+
+/* --- 자기소개 섹션 스타일 (기존과 동일) --- */
+#about {
+    background-color: #fff;
+    padding: 60px 20px; 
+    text-align: center;
+    border-bottom: 1px solid #eee; 
+}
+
+.about-content {
+    max-width: 900px; 
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 30px; 
+}
+
+@media (min-width: 768px) { 
+    .about-content {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #007bff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* --- 사용 툴 섹션 스타일 (기존과 동일) --- */
+#skills-tools {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    margin-top: 50px;
+}
+
+#skills-tools h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    color: #007bff;
+}
+
+.tool-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 900px; 
+    margin: 0 auto 40px; 
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    text-align: center;
+}
+
+.tool-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    filter: grayscale(30%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.tool-item img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.tool-item span {
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #555;
+}
+
+.additional-skills {
+    font-size: 1.1em;
+    color: #666;
+    margin-top: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- 메인 포트폴리오 섹션 스타일 (카테고리 배너들을 포함하는 영역) --- */
+#portfolio-items {
+    padding: 20px; 
+}
+
+#portfolio-items h2 {
+    text-align: center;
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    color: #007bff;
+    position: relative;
+}
+
+#portfolio-items h2::after { 
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #007bff;
+    border-radius: 2px;
+}
+
+/* --- 각 카테고리 배너 섹션 (전체 박스) --- */
+/* 배너 외곽 박스 제거를 위해 이전 수정에서 삭제된 속성들이 반영됨 */
+.portfolio-category {
+    margin-bottom: 40px; /* 각 배너 섹션 간의 간격 유지 */
+    overflow: hidden; /* 내부 이미지의 둥근 모서리 유지를 위해 필요 */
+    
+    /* 내부의 category-banner-link (배너)를 중앙에 배치하기 위한 속성들은 유지 */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* --- category-banner-link (클릭 가능한 배너 <a> 태그) --- */
+.category-banner-link {
+    display: block; 
+    text-decoration: none; 
+    width: 100%; 
+    max-width: 650px; /* '글입다'처럼 중앙에 보이는 배너의 최대 너비 */
+    margin: 0 auto; /* 배너 자체를 중앙에 정렬 */
+}
+
+/* --- category-thumbnail (실제 배너 이미지와 오버레이를 담는 컨테이너) --- */
+.category-thumbnail {
+    width: 100%;
+    aspect-ratio: 16 / 9; 
+    overflow: hidden; 
+    border-radius: 8px; 
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 배너 이미지 자체의 그림자 */
+    transition: transform 0.3s ease; 
+}
+
+/* --- 호버 시 배너 이미지 확대 효과 --- */
+.category-banner-link:hover .category-thumbnail { 
+    transform: scale(1.02); 
+}
+
+.category-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block; 
+}
+
+/* --- 썸네일 오버레이 (마우스 오버 시 나타나는 텍스트) --- */
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 123, 255, 0.7); 
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+
+/* --- 호버 시 오버레이 나타나는 효과 --- */
+.category-banner-link:hover .thumbnail-overlay { 
+    opacity: 1; 
+}
+
+.thumbnail-overlay p {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* --- 연락처 섹션 스타일 (기존과 동일) --- */
+#contact {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#contact h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+#contact p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.contact-info a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 2.2em;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #007bff;
+    transform: translateY(-5px);
+}
+
+.social-links .fa-linkedin:hover { color: #0077B5; } 
+.social-links .fa-instagram:hover { color: #e440ad; } 
+.social-links .fa-youtube:hover { color: #FF0000; }
+.social-links .fa-comment:hover { color: #FEE500; } 
+.social-links .fa-behance:hover { color: #1769FF; }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 20px;
+}
