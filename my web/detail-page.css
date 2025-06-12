@@ -66,21 +66,82 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* 미디어 (이미지/영상) 컨테이너 */
+/* ---------------------------------------------------- */
+/* 미디어 (이미지/영상) 컨테이너의 공통 스타일 */
+/* ---------------------------------------------------- */
 .item-media {
     width: 100%;
-    aspect-ratio: 16 / 9; /* 영상/이미지 비율 유지 */
-    background-color: #000; /* 미디어 로딩 중 배경색 */
     border-radius: 5px;
-    overflow: hidden;
+    overflow: hidden; /* 내부 내용이 넘치면 숨김 (필수) */
+    background-color: #f0f0f0; /* 이미지가 contain으로 보일 때 빈 공간을 채울 배경색 */
+
+    /* !!! 이 두 속성 추가 또는 수정 !!! */
+    position: relative; /* 자식 요소의 absolute 위치 기준점 (특히 video-wrapper를 위해) */
+    display: flex;      /* 내부 콘텐츠 (img 또는 video-wrapper)를 정렬하기 위함 */
+    justify-content: center; /* 내부 콘텐츠를 가로 중앙 정렬 */
+    align-items: center; /* 내부 콘텐츠를 세로 중앙 정렬 */
+    /* 기본적으로 이미지와 영상 모두에 적용되어야 합니다. */
 }
 
-.item-media img,
-.item-media iframe {
+/* ---------------------------------------------------- */
+/* 이미지 (디자인 작업물) 전용 스타일 */
+/* ---------------------------------------------------- */
+.item-media img {
+    max-width: 100%; /* 이미지가 컨테이너 너비를 넘지 않도록 */
+    height: auto;    /* 이미지의 원래 비율을 유지하면서 높이를 자동 조절 */
+    display: block;  /* 블록 요소로 만들어 여백 이슈 줄임 */
+    object-fit: contain; /* 이미지가 잘리지 않고 컨테이너 안에 다 보이도록 */
+
+    /* item-media가 display: flex 이므로, margin: 0 auto;는 이제 img 자체에 필요 없습니다.
+       대신 item-media의 justify-content: center 가 중앙 정렬을 담당합니다. */
+}
+
+/* ---------------------------------------------------- */
+/* iframe (영상) 전용 스타일 및 래퍼 */
+/* ---------------------------------------------------- */
+
+/* iframe을 감싸는 새로운 래퍼 추가 */
+.video-wrapper {
+    position: relative; /* 자식 iframe의 absolute 기준점 */
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 비율 (9 / 16 * 100 = 56.25%) */
+    height: 0;               /* padding-bottom으로 높이를 설정하므로 자체 높이는 0 */
+    overflow: hidden;        /* 혹시 iframe이 넘쳐도 숨김 */
+    /* video-wrapper 자체에는 어떤 고정된 height 값도 없어야 합니다. */
+}
+
+.video-wrapper iframe {
+    position: absolute; /* 부모인 .video-wrapper 기준으로 절대 위치 */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 이미지/영상 잘림 없이 채우기 */
-    display: block;
+    border: none; /* iframe 기본 보더 제거 */
+    margin: 0; /* iframe 기본 마진 제거 */
+    padding: 0; /* iframe 기본 패딩 제거 */
+    /* object-fit: cover; 같은 불필요한 속성은 여기에 없어야 합니다. */
+}
+
+
+/* ---------------------------------------------------- */
+/* 개별 작업물 상세 블록 - 반응형 디자인 (이전과 동일하게 유지) */
+/* ---------------------------------------------------- */
+@media (min-width: 768px) {
+    .portfolio-item-detail {
+        flex-direction: row; 
+        align-items: flex-start;
+    }
+
+    .item-media {
+        flex: 2; 
+        margin-right: 30px; 
+        /* min-height는 이미지의 최소 높이를 보장하는 용도이므로 유지 가능 */
+        min-height: 250px; /* 예시 값. 이미지 최소 높이. */
+    }
+
+    .item-description {
+        flex: 3; 
+    }
 }
 
 /* 작업물 설명 부분 */
@@ -165,19 +226,102 @@
     margin-left: 8px;
 }
 
-/* 반응형 디자인 */
+/* ---------------------------------------------------- */
+/* 추가 이미지 갤러리 스타일 (추가 또는 수정) */
+/* ---------------------------------------------------- */
+.image-gallery {
+    margin-top: 20px; /* 메인 콘텐츠와의 간격 (portfolio-item-detail의 gap과 별개로) */
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 반응형 그리드 */
+    gap: 20px; /* 이미지 간 간격 */
+    justify-content: center; /* 그리드 아이템 중앙 정렬 */
+    width: 100%; /* 부모 너비 채우기 */
+}
+
+.gallery-title { /* 갤러리 제목 h4에 대한 스타일 */
+    grid-column: 1 / -1; /* 그리드 전체 너비를 차지 */
+    text-align: center;
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.gallery-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 1.5px;
+}
+
+.gallery-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto; /* 이미지 높이가 원본 비율에 따라 자유롭게 조절되도록 */
+    object-fit: contain; /* 이미지가 잘리지 않고 컨테이너에 맞게 축소 */
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.image-caption {
+    padding: 15px 10px;
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+/* ---------------------------------------------------- */
+/* 반응형 디자인 (기존 미디어 쿼리 수정) */
+/* ---------------------------------------------------- */
 @media (min-width: 768px) {
     .portfolio-item-detail {
+        /* 이미 flex-direction: column 이 기본값이므로, 여기서 굳이 명시할 필요는 없습니다. */
+        /* 하지만 명시해서 혼동을 줄이는 것이 좋습니다. */
+        flex-direction: column; 
+        /* gap은 상단에 이미 정의되어 있으므로 필요 없습니다. */
+    }
+
+    /* top-content-wrapper (미디어 + 설명)는 가로로 배치 */
+    .top-content-wrapper { 
+        display: flex;
         flex-direction: row; /* 데스크톱에서 가로로 배치 */
-        align-items: flex-start; /* 상단 정렬 */
+        align-items: flex-start; 
+        gap: 30px; 
+        width: 100%; 
     }
 
     .item-media {
-        flex: 2; /* 미디어 영역이 더 많은 공간 차지 */
-        margin-right: 30px; /* 설명과의 간격 */
+        flex: 2; 
+        min-height: 250px; 
     }
 
     .item-description {
-        flex: 3; /* 설명 영역이 더 많은 공간 차지 */
+        flex: 3; 
+    }
+
+    /* image-gallery는 데스크톱에서도 여전히 그리드로 아래에 위치 */
+    .image-gallery {
+        margin-top: 30px; /* top-content-wrapper와의 간격 조정 */
+        /* 그리드 칼럼은 그대로 유지 */
     }
 }
