@@ -311,7 +311,7 @@ header h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 123, 255, 0.7); 
+    background-color: rgba(0, 0, 0, 0.404); 
     color: #fff;
     display: flex;
     justify-content: center;
@@ -399,4 +399,138 @@ footer {
     background-color: #333;
     color: #fff;
     margin-top: 20px;
+}
+
+/* ---------------------------------------------------- */
+/* 반응형 디자인을 위한 미디어 쿼리 */
+/* 화면 너비가 768px 이하일 때 적용될 스타일 (태블릿 및 모바일) */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+    /* ------------------- 공통 헤더 및 내비게이션 ------------------- */
+    header {
+        padding: 15px 20px;
+        flex-direction: row; /* 헤더 요소들을 가로로 유지 */
+        justify-content: space-between; /* 양 끝 정렬 */
+    }
+
+    header h1 {
+        font-size: 1.5em; /* 모바일에서 제목 크기 줄이기 */
+    }
+
+    .hamburger-btn {
+        display: block; /* 모바일에서 햄버거 버튼 보이게 */
+        font-size: 1.8em;
+    }
+
+    /* 메뉴 오버레이 (햄버거 메뉴) - 기본은 풀스크린 유지 */
+    .menu-overlay .overlay-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .menu-overlay .overlay-nav a {
+        font-size: 1.8em;
+    }
+
+    /* ------------------- 메인 섹션 스타일 (index.html) ------------------- */
+    #hero {
+        padding: 80px 20px; /* 모바일에서 패딩 줄이기 */
+    }
+
+    #hero h2 {
+        font-size: 2.2em; /* 모바일에서 제목 크기 줄이기 */
+    }
+
+    #hero p {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+
+    #about {
+        padding: 40px 20px; /* 모바일에서 패딩 줄이기 */
+        flex-direction: column; /* 정보 섹션을 세로로 배치 */
+        align-items: center;
+    }
+
+    #about .profile-image {
+        width: 150px; /* 모바일에서 이미지 크기 줄이기 */
+        height: 150px;
+        margin-bottom: 25px; /* 이미지 아래 여백 추가 */
+        margin-right: 0; /* 기존 데스크톱 마진 제거 */
+    }
+
+    #about .profile-text {
+        text-align: center; /* 텍스트 중앙 정렬 */
+    }
+
+    #about h3 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    #about p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    /* 포트폴리오 카테고리 */
+    .portfolio-category-list {
+        grid-template-columns: 1fr; /* 모바일에서 한 줄에 한 개의 카테고리만 표시 */
+        gap: 25px; /* 간격 조절 */
+        padding: 40px 20px; /* 패딩 조절 */
+    }
+
+    .category-card {
+        padding: 25px;
+    }
+
+    .category-card h3 {
+        font-size: 1.6em;
+    }
+
+    .category-card p {
+        font-size: 0.95em;
+    }
+
+    /* CONTACT ME 섹션 */
+    #contact {
+        padding: 40px 20px; /* 패딩 조절 */
+    }
+
+    #contact h2 {
+        font-size: 2em;
+    }
+
+    .contact-info p {
+        font-size: 1em;
+    }
+
+    .social-links a {
+        font-size: 1.5em;
+        margin: 0 8px;
+    }
+}
+
+
+/* ---------------------------------------------------- */
+/* 화면 너비가 480px 이하일 때 적용될 스타일 (작은 모바일 기기) */
+/* ---------------------------------------------------- */
+@media (max-width: 480px) {
+    #hero h2 {
+        font-size: 1.8em;
+    }
+
+    .btn-group .btn-primary,
+    .btn-group .btn-secondary {
+        display: block; /* 버튼을 세로로 나열 */
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0; /* 기존 마진 제거 */
+    }
 }

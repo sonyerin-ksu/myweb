@@ -325,3 +325,116 @@
         /* 그리드 칼럼은 그대로 유지 */
     }
 }
+/* detail-page.css */
+
+/* ... (기존 데스크톱 우선 스타일 유지) ... */
+
+
+/* ---------------------------------------------------- */
+/* 반응형 디자인을 위한 미디어 쿼리 */
+/* 화면 너비가 768px 이하일 때 적용될 스타일 (태블릿 및 모바일) */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+    #detail-page-content {
+        padding: 30px 15px; /* 모바일에서 패딩 줄이기 */
+        margin-top: 20px; /* 상단 마진 줄이기 */
+    }
+
+    .category-title {
+        font-size: 2.5em; /* 모바일에서 제목 크기 줄이기 */
+        margin-bottom: 40px;
+    }
+
+    /* 개별 작업물 상세 블록 */
+    .portfolio-item-detail {
+        flex-direction: column; /* 모바일에서 세로 배치 (이미 기본값이지만 명시) */
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    /* top-content-wrapper (미디어 + 설명) - 모바일에서는 세로로 쌓이도록 */
+    .top-content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .item-media {
+        flex: auto; /* flex 비율 제거 */
+        width: 100%;
+        margin-right: 0; /* 기존 데스크톱 마진 제거 */
+        min-height: auto; /* 모바일에서 최소 높이 제거하거나 줄이기 */
+    }
+
+    .item-description {
+        flex: auto; /* flex 비율 제거 */
+    }
+
+    .item-description h3 {
+        font-size: 1.8em;
+    }
+
+    .item-description .summary {
+        font-size: 1em;
+    }
+
+    .item-description .tags span {
+        font-size: 0.85em;
+        padding: 4px 10px;
+    }
+
+    .item-description h4 {
+        font-size: 1.3em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .item-description p,
+    .item-description ul li {
+        font-size: 0.95em;
+        line-height: 1.6;
+    }
+
+    .project-links a {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    /* 갤러리 섹션 */
+    .image-gallery {
+        grid-template-columns: 1fr; /* 모바일에서 한 줄에 한 이미지 */
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .gallery-title {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+    }
+
+    .gallery-item img {
+        height: auto; /* 모바일에서 이미지 높이를 유동적으로 */
+    }
+
+    .image-caption {
+        font-size: 0.9em;
+        padding: 10px 8px;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* 화면 너비가 480px 이하일 때 적용될 스타일 (작은 모바일 기기) */
+/* ---------------------------------------------------- */
+@media (max-width: 480px) {
+    .category-title {
+        font-size: 2em;
+    }
+
+    .item-description h3 {
+        font-size: 1.5em;
+    }
+
+    .gallery-item img {
+        /* 작은 화면에서 이미지 높이를 더 제한할 필요가 있다면 여기서 설정 */
+        /* max-height: 250px; */
+    }
+}
